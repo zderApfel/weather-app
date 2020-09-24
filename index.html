@@ -13,7 +13,7 @@
                 <form>
                     <label for="search-term">City Name</label>
                     <input type="text" name="search-term" id="search-term" required>
-                    <button type="button" id="search-button" onclick="getWeather()">Search</button>
+                    <button type="button" id="search-button" onclick="getWeather().then(weatherDOM).catch(displayError)">Search</button>
                 </form>
                 <div id="data-display">
                     <h2 id="city"></h2>
@@ -22,6 +22,7 @@
                         <li id="temperature"></li>
                         <li><span id="humidity"></span> <span id="feels-like"></span></li>
                     </ul>
+                    <div id="button-holder"></div>
                 </div>
             </div>
         </div>

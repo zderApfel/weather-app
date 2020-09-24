@@ -52,3 +52,7 @@ ul{
     width: 60%;
     height: 60%;
 }
+
+#conversion-button{
+    padding: 10px;
+}
