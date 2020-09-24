@@ -35,16 +35,18 @@ ul{
 #weather-box{
     text-align: center;
     margin: auto;
+    margin-top: 5%;
     padding: auto;
     background-color: lightgrey;
     width: 50%;
-    height: 50%;
+    height: auto;
     border-style: outset;
 }
 
 #data-display{
     margin: auto;
     margin-top: 25px;
+    margin-bottom: 10px;
     padding: auto;
     border-style: inset;
     width: 60%;
