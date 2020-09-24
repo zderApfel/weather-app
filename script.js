@@ -1,10 +1,22 @@
+/*
+    JSON Addresses:
+
+    City Name - data.name
+    Weather - data.weather[0].main
+    Temperature - data.main.temp*
+    Humidity - data.main.humidity
+    Feels Like - data.main.feels_like*
+
+    * Feels Like and Temperature values are in Kelvin and will need to be converted for Celcius and Fareinheit
+*/
+
 async function getWeather(location){
     try{
-        let dataFetch = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=590d636504a11a0be1e2306aae89453a`, {mode: 'cors'});
+        let dataFetch = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${CONFIG.API_KEY}`, {mode: 'cors'});
         let weather = await dataFetch.json();
         return weather;
     } catch(err){
-        console.log("Oops! " + err)
+        console.log("Oops! " + err);
     }
 }
 
