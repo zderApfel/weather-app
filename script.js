@@ -11,20 +11,27 @@
 */
 
 async function getWeather(location){
+    const searchTerm = document.querySelector("#search-term");
+    const loadingArea = document.querySelector("#city");
     try{
-        let dataFetch = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${CONFIG.API_KEY}`, {mode: 'cors'});
+        let dataFetch = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${searchTerm.value}&appid=${CONFIG.API_KEY}`, {mode: 'cors'});
         let weather = await dataFetch.json();
+        loadingArea.textContent = "Loading..."
         return weather;
     } catch(err){
         console.log("Oops! " + err);
     }
 }
 
-const showWeather = (data) => {
-    console.log(`City Name: ${data.name}`);
-    console.log(`Weather: ${data.weather[0].main}`);
-    console.log(`Temperature: ${data.main.temp}`);
-    console.log(`Humidity: ${data.main.humidity}% | Feels like ${data.main.feels_like}`);
+function weatherDOM(data) {
+    const CITY_NAME = document.querySelector("#city");
+    const WEATHER = document.querySelector("#weather");
+    const TEMPERATURE = document.querySelector("#temperature");
+    const HUMIDITY = document.querySelector("#humidity");
+    const FEELS_LIKE = document.querySelector("#feels-like");
+    CITY_NAME.textContent = data.name;
+    WEATHER.textContent = data.weather[0].main;
+    TEMPERATURE.textContent = `Temperature ${data.main.temp}K`;
+    HUMIDITY.textContent = `Humidity: ${data.main.humidity}%`;
+    FEELS_LIKE.textContent = `(Feels Like: ${data.main.feels_like}K)`;
 }
-
-getWeather("Ocala").then(showWeather);

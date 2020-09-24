@@ -7,9 +7,25 @@
     <body>
         <div id="background">
         </div>
-        <div id="container"></div>
-        
+        <div id="container">
+            <div id="weather-box">
+                <h2>Check the weather!</h2>
+                <form>
+                    <label for="search-term">City Name</label>
+                    <input type="text" name="search-term" id="search-term" required>
+                    <button type="button" id="search-button" onclick="getWeather().then(weatherDOM)">Search</button>
+                </form>
+                <div id="data-display">
+                    <h2 id="city"></h2>
+                    <ul id="weather-data">
+                        <li><h3 id="weather"></h3></li>
+                        <li id="temperature"></li>
+                        <li><span id="humidity"></span> <span id="feels-like"></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </body>
     <script src="config.js"></script>
-    <!-- <script src="script.js"></script> -->
+    <script src="script.js"></script>
 </html>
